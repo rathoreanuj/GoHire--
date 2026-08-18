@@ -1,6 +1,15 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
+const swaggerServers = (process.env.SWAGGER_SERVERS || '')
+  .split(',')
+  .map((url) => url.trim())
+  .filter(Boolean)
+  .map((url) => ({
+    url,
+    description: 'Configured Server',
+  }));
+
 const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
@@ -9,12 +18,7 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'API documentation for the Admin backend of JobPortal-GoHire',
     },
-    servers: [
-      {
-        url: 'https://gohire-admin.onrender.com',
-        description: 'Local server',
-      },
-    ],
+    servers: swaggerServers,
     components: {
       securitySchemes: {
         cookieAuth: {

@@ -50,7 +50,10 @@ const createCheckoutSession = async (req, res) => {
     const PRICE_INR = 999;
     const unitAmount = PRICE_INR * 100; // in paise
 
-    const origin = process.env.FRONTEND_URL || req.headers.origin || `http://localhost:5175`;
+    const origin = (process.env.FRONTEND_URL || req.headers.origin || '').trim();
+    if (!origin) {
+      return res.status(500).json({ success: false, message: 'FRONTEND_URL is not configured' });
+    }
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],

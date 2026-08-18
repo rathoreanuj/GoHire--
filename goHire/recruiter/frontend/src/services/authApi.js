@@ -1,4 +1,5 @@
 import api from './api';
+import { API_BASE } from '../config/env';
 
 export const authApi = {
   login: async (email, password) => {
@@ -46,7 +47,6 @@ export const authApi = {
   },
 
   getProfileImage: (userId) => {
-    const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com';
     return `${API_BASE}/api/auth/profile-image/${userId}`;
   },
 

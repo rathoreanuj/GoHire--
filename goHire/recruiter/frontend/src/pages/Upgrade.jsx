@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { getStoredToken } from '../services/api';
 import { useAuth } from '../hooks/useAuth';
 import { Check } from 'lucide-react';
+import { API_BASE } from '../config/env';
 
 const Upgrade = () => {
   const { user, checkAuth } = useAuth();
@@ -30,7 +31,7 @@ const Upgrade = () => {
     setVerifyMsg('Verifying your payment...');
     try {
       const token = getStoredToken();
-      const res = await fetch(`${import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com'}/api/upgrade/verify-session`, {
+      const res = await fetch(`${API_BASE}/api/upgrade/verify-session`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -124,7 +125,7 @@ const Upgrade = () => {
                 onClick={async () => {
                   try {
                     const token = getStoredToken();
-                    const res = await fetch(`${import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com'}/api/upgrade/create-checkout-session`, {
+                    const res = await fetch(`${API_BASE}/api/upgrade/create-checkout-session`, {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json',

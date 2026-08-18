@@ -1,4 +1,5 @@
 import api from "./api";
+import { API_BASE } from "../config/env";
 
 export const adminApi = {
   // Applicants
@@ -75,7 +76,7 @@ export const adminApi = {
     </soap:Body>
   </soap:Envelope>`;
 
-    const response = await fetch(`${import.meta.env.VITE_API_BASE || "https://gohire-admin.onrender.com"}/wsdl`, {
+    const response = await fetch(`${API_BASE}/wsdl`, {
       method: "POST",
       headers: {
         "Content-Type": "text/xml;charset=UTF-8",
@@ -100,7 +101,7 @@ export const adminApi = {
 
   // Proof Document
   getProofDocumentUrl: (proofId) => {
-    return `${import.meta.env.VITE_API_BASE || "https://gohire-admin.onrender.com"}/api/admin/company/proof/${proofId}`;
+    return `${API_BASE}/api/admin/company/proof/${proofId}`;
   },
 
   getProofDocument: async (proofId) => {

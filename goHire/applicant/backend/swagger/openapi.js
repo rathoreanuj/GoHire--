@@ -7,6 +7,8 @@
  * - GET /api/docs.json (raw OpenAPI JSON)
  */
 
+const serverUrl = (process.env.OPENAPI_SERVER_URL || '').trim();
+
 const spec = {
   openapi: "3.0.3",
   info: {
@@ -15,12 +17,14 @@ const spec = {
     description:
       "Swagger documentation for the Applicant service (Try-it-out enabled).",
   },
-  servers: [
-    {
-      url: "http://localhost:3000",
-      description: "Local applicant backend",
-    },
-  ],
+  servers: serverUrl
+    ? [
+      {
+        url: serverUrl,
+        description: "Applicant backend",
+      },
+    ]
+    : [],
   tags: [
     { name: "Health", description: "Service health check" },
     { name: "Auth", description: "Authentication and account flows" },

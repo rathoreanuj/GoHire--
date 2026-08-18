@@ -15,8 +15,6 @@ const Profile = () => {
   const { user: authUser, logout } = useAuth();
   const navigate = useNavigate();
 
-  const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com';
-
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchProfile();

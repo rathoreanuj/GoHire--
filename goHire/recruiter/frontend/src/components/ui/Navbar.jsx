@@ -12,8 +12,6 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com';
-
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {

@@ -1,4 +1,5 @@
 import api from './api';
+import { API_BASE } from '../config/env';
 
 export const applicantApi = {
   getJobs: async (query) => {
@@ -89,7 +90,6 @@ export const applicantApi = {
   },
 
   getLogo: (logoId) => {
-    const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-applicant.onrender.com';
     return `${API_BASE}/api/applicant/logo/${logoId}`;
   },
 

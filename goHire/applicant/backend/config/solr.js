@@ -7,11 +7,11 @@ require('dotenv').config();
  * 1. Create an empty core named e.g. "gohire" (see scripts/solr-core-setup.txt).
  * 2. Run: npm run solr:init   (adds fields via Schema API)
  * 3. Run: npm run solr:index (loads jobs + internships from MongoDB into Solr)
- * 4. Set env: SOLR_ENABLED=true and SOLR_BASE_URL=http://localhost:8983/solr/gohire
+ * 4. Set env: SOLR_ENABLED=true and SOLR_BASE_URL=<your-solr-core-url>
  */
 
 function getSolrBaseUrl() {
-  const raw = process.env.SOLR_BASE_URL || 'http://localhost:8983/solr/gohire';
+  const raw = process.env.SOLR_BASE_URL || '';
   return raw.replace(/\/$/, '');
 }
 

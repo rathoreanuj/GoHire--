@@ -6,6 +6,7 @@ import { useAuth } from '../hooks/useAuth';
 import { CheckCircle, XCircle, FileText, ArrowLeft, Lock } from 'lucide-react';
 import Badge from '../components/ui/Badge';
 import { formatDate } from '../utils/formatDate';
+import { API_BASE } from '../config/env';
 
 const Applications = () => {
   const { jobId } = useParams();
@@ -16,8 +17,6 @@ const Applications = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [actionLoading, setActionLoading] = useState(null);
-
-  const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com';
 
   useEffect(() => {
     window.scrollTo(0, 0);

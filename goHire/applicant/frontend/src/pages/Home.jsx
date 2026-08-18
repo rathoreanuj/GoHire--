@@ -16,6 +16,7 @@ import logoWipro from '../assets/images/brand_logo_wipro.webp';
 import logoAsianPaints from '../assets/images/brand_logo_asianpaints.webp';
 import logoHp from '../assets/images/brand_logo_hp.webp';
 import logoAditya from '../assets/images/brand_logo_aditya.webp';
+import { RECRUITER_APP_URL } from '../config/env';
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -275,7 +276,7 @@ const Home = () => {
                   smart minds
                 </p>
                 <Link
-                  to="https://gohire-recruiter.vercel.app/login"
+                  to={`${RECRUITER_APP_URL}/login`}
                   className="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 inline-block mt-2"
                 >
                   Login as Recruiter

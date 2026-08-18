@@ -1,6 +1,5 @@
 import api from './api';
-
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-applicant.onrender.com';
+import { API_BASE } from '../config/env';
 
 export const fileApi = {
   getResume: () => {

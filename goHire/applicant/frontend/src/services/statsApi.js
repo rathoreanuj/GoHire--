@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const ADMIN_API_BASE = import.meta.env.VITE_ADMIN_API_BASE || 'https://gohire-admin.onrender.com';
+import { ADMIN_API_BASE } from '../config/env';
 
 const statsApi = axios.create({
   baseURL: `${ADMIN_API_BASE}/api`,

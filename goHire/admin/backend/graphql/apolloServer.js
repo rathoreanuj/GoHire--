@@ -98,7 +98,9 @@ function setupGraphQL(app) {
   }));
   
   console.log('GraphQL endpoint configured at /graphql');
-  console.log('GraphiQL UI available at https://gohire-admin.onrender.com/graphql');
+  const publicBaseUrl = (process.env.PUBLIC_BASE_URL || '').trim();
+  const graphiqlUrl = publicBaseUrl ? `${publicBaseUrl}/graphql` : '/graphql';
+  console.log(`GraphiQL UI available at ${graphiqlUrl}`);
 }
 
 module.exports = setupGraphQL;

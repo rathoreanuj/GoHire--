@@ -23,27 +23,32 @@ const searchRoutes = require('./routes/search.routes');
 const redis = require('./config/redis');
 
 const app = express();
-const PORT = 3000; // Hardcoded port
+const PORT = process.env.PORT || 3000;
+
+const parseOriginList = (...values) => (
+  values
+    .filter(Boolean)
+    .flatMap((value) => String(value).split(','))
+    .map((origin) => origin.trim())
+    .filter(Boolean)
+);
+
+const allowedOrigins = parseOriginList(
+  process.env.CORS_ALLOWED_ORIGINS,
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_FRONTEND_URL,
+  process.env.RECRUITER_FRONTEND_URL,
+  process.env.APPLICANT_FRONTEND_URL
+);
 
 // Disable ETag generation to prevent 304 Not Modified responses
 app.set('etag', false);
-
-// CORS configuration (Hardcoded frontend URLs)
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5174',
-  'http://localhost:5175',
-  'https://gohire-applicant.vercel.app',
-  'https://gohire-applicant.onrender.com',
-  'https://gohire-recruiter.vercel.app',
-  'https://gohire-admin.vercel.app'
-];
 
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
+    if (!allowedOrigins.length || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));

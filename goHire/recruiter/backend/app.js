@@ -30,18 +30,33 @@ const graphqlRoutes = require('./routes/graphql.routes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const parseOriginList = (...values) => (
+  values
+    .filter(Boolean)
+    .flatMap((value) => String(value).split(','))
+    .map((origin) => origin.trim())
+    .filter(Boolean)
+);
+
+const allowedOrigins = parseOriginList(
+  process.env.CORS_ALLOWED_ORIGINS,
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_FRONTEND_URL,
+  process.env.APPLICANT_FRONTEND_URL,
+  process.env.RECRUITER_FRONTEND_URL
+);
+
 // CORS configuration
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || "https://gohire-recruiter.vercel.app",
-    "https://gohire-recruiter.vercel.app",
-    "https://gohire-applicant.vercel.app",
-    "https://gohire-admin.vercel.app",
-    "http://localhost:5175",
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "http://localhost:5174"
-  ],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+
+    if (!allowedOrigins.length || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control', 'Pragma', 'Expires'],
   exposedHeaders: ['Cache-Control', 'Pragma', 'Expires']
@@ -71,6 +86,21 @@ if (process.env.MONGO_URI_APPLICANT && process.env.NODE_ENV !== 'test') {
     await connectApplicantDB();
   })();
 }
+
+// Root route (API server — frontend runs separately on port 5175)
+app.get('/', (req, res) => {
+  res.json({
+    ok: true,
+    service: 'recruiter',
+    message: 'GoHire Recruiter API is running',
+    port: PORT,
+    endpoints: {
+      health: '/api/health',
+      docs: '/api-docs',
+      graphql: '/graphql-playground',
+    },
+  });
+});
 
 // Health check
 app.get('/api/health', (req, res) => {

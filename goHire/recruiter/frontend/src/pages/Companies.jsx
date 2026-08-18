@@ -4,6 +4,7 @@ import { companiesApi } from "../services/companiesApi";
 import Badge from "../components/ui/Badge";
 import { CheckCircle, Eye } from "lucide-react";
 import { Pencil, Trash2 } from "lucide-react";
+import { API_BASE } from "../config/env";
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
@@ -12,8 +13,6 @@ const Companies = () => {
   const [deleteLoading, setDeleteLoading] = useState(null);
   const [viewingProof, setViewingProof] = useState(null);
   const navigate = useNavigate();
-
-  const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com';
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -4,6 +4,7 @@ import { getStoredToken } from '../services/api';
 import { useAuth } from '../hooks/useAuth';
 import { ArrowLeft, User, Mail, Phone, GraduationCap, Briefcase, Code, Globe, Github, Linkedin, Trophy, FileText, Lock } from 'lucide-react';
 import defaultImage from '../assets/images/default.png';
+import { API_BASE } from '../config/env';
 
 const ApplicantProfile = () => {
   const { applicantId } = useParams();
@@ -18,8 +19,6 @@ const ApplicantProfile = () => {
       navigate('/upgrade', { replace: true });
     }
   }, [user, navigate]);
-
-  const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com';
 
   const fetchApplicantDetails = useCallback(async () => {
     try {

@@ -1,6 +1,15 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const path = require('path');
 
+const swaggerServers = (process.env.SWAGGER_SERVERS || '')
+  .split(',')
+  .map((url) => url.trim())
+  .filter(Boolean)
+  .map((url) => ({
+    url,
+    description: 'Configured Server',
+  }));
+
 const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
@@ -9,16 +18,7 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'API Documentation for the Recruiter Server of GoHire',
     },
-    servers: [
-      {
-        url: 'http://localhost:5000',
-        description: 'Development Server',
-      },
-      {
-        url: 'https://gohire-recruiter-server.onrender.com', // Example production URL
-        description: 'Production Server',
-      }
-    ],
+    servers: swaggerServers,
     components: {
       securitySchemes: {
         bearerAuth: {

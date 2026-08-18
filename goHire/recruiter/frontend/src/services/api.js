@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://gohire-recruiter.onrender.com';
+import { API_BASE } from '../config/env';
 
 const TOKEN_KEY = 'recruiter_token';
 
