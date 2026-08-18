@@ -1,6 +1,8 @@
-export const API_BASE = (import.meta.env.VITE_API_BASE || '').trim();
-export const ADMIN_API_BASE = (import.meta.env.VITE_ADMIN_API_BASE || '').trim();
-export const RECRUITER_APP_URL = (import.meta.env.VITE_RECRUITER_APP_URL || '').trim();
+const normalizeUrl = (value) => value.trim().replace(/\/+$/, '');
+
+export const API_BASE = normalizeUrl(import.meta.env.VITE_API_BASE || '');
+export const ADMIN_API_BASE = normalizeUrl(import.meta.env.VITE_ADMIN_API_BASE || '');
+export const RECRUITER_APP_URL = normalizeUrl(import.meta.env.VITE_RECRUITER_APP_URL || '');
 
 if (!API_BASE) {
   console.warn('VITE_API_BASE is not set. Configure it in your environment.');
