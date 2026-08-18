@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-04-20T11:14:14.115Z",
+  "runStartedAt": "2026-04-20T11:13:27.708Z",
+  "runEndedAt": "2026-04-20T11:14:14.115Z",
+  "overallStatus": "failed",
+  "results": [
+    {
+      "project": "admin-backend",
+      "cwd": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\goHire\\admin\\backend",
+      "startedAt": "2026-04-20T11:13:27.778Z",
+      "endedAt": "2026-04-20T11:13:41.541Z",
+      "exitCode": 0,
+      "signal": null,
+      "runner": "npm (shell)",
+      "commandLogPath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\admin-backend\\command.log",
+      "reportPath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\admin-backend\\results.json",
+      "coveragePath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\admin-backend\\coverage",
+      "error": null
+    },
+    {
+      "project": "applicant-backend",
+      "cwd": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\goHire\\applicant\\backend",
+      "startedAt": "2026-04-20T11:13:41.631Z",
+      "endedAt": "2026-04-20T11:14:04.247Z",
+      "exitCode": 0,
+      "signal": null,
+      "runner": "npm (shell)",
+      "commandLogPath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\applicant-backend\\command.log",
+      "reportPath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\applicant-backend\\results.json",
+      "coveragePath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\applicant-backend\\coverage",
+      "error": null
+    },
+    {
+      "project": "recruiter-backend",
+      "cwd": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\goHire\\recruiter\\backend",
+      "startedAt": "2026-04-20T11:14:04.267Z",
+      "endedAt": "2026-04-20T11:14:14.110Z",
+      "exitCode": 1,
+      "signal": null,
+      "runner": "npm (shell)",
+      "commandLogPath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\recruiter-backend\\command.log",
+      "reportPath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\recruiter-backend\\results.json",
+      "coveragePath": "C:\\Users\\adity\\OneDrive\\Desktop\\React GoHire\\test-reports\\recruiter-backend\\coverage",
+      "error": null
+    }
+  ]
+}

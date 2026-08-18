@@ -1,0 +1,103 @@
+version: "3.8"
+
+services:
+  admin-backend:
+    build:
+      context: ./goHire/admin/backend
+    container_name: gohire-admin-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 9000
+      SESSION_SECRET: ""
+      MONGO_URI_ADMIN: ""
+      MONGO_URI_RECRUITER: ""
+      MONGO_URI_APPLICANT: ""
+      REDIS_URL: ""
+      EMAILJS_SERVICE_ID: ""
+      EMAILJS_TEMPLATE_ID: ""
+      EMAILJS_PUBLIC_KEY: ""
+      EMAILJS_PRIVATE_KEY: ""
+      FRONTEND_URL: http://localhost:5173
+    ports:
+      - "9000:9000"
+
+  applicant-backend:
+    build:
+      context: ./goHire/applicant/backend
+    container_name: gohire-applicant-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      MONGO_URI: ""
+      MONGO_URI_RECRUITERS: ""
+      JWT_SECRET: ""
+      SESSION_SECRET: ""
+      REDIS_URL: ""
+      EMAILJS_SERVICE_ID: ""
+      EMAILJS_TEMPLATE_ID: ""
+      EMAILJS_PUBLIC_KEY: ""
+      EMAILJS_PRIVATE_KEY: ""
+      FRONTEND_URL: http://localhost:5174
+      RECRUITER_API_URL: http://gohire-recruiter-backend:5000
+    ports:
+      - "3000:3000"
+
+  recruiter-backend:
+    build:
+      context: ./goHire/recruiter/backend
+    container_name: gohire-recruiter-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGO_URI: ""
+      MONGO_URI_APPLICANT: ""
+      JWT_SECRET: ""
+      SESSION_SECRET: ""
+      REDIS_URL: ""
+      STRIPE_SECRET_KEY: ""
+      EMAILJS_SERVICE_ID: ""
+      EMAILJS_TEMPLATE_ID: ""
+      EMAILJS_PUBLIC_KEY: ""
+      EMAILJS_PRIVATE_KEY: ""
+      FRONTEND_URL: http://localhost:5175
+    ports:
+      - "5000:5000"
+
+  admin-frontend:
+    build:
+      context: ./goHire/admin/frontend
+    container_name: gohire-admin-frontend
+    restart: unless-stopped
+    depends_on:
+      - admin-backend
+    environment:
+      VITE_API_BASE: http://localhost:9000
+    ports:
+      - "5173:5173"
+
+  applicant-frontend:
+    build:
+      context: ./goHire/applicant/frontend
+    container_name: gohire-applicant-frontend
+    restart: unless-stopped
+    depends_on:
+      - applicant-backend
+    environment:
+      VITE_API_BASE: http://localhost:3000
+    ports:
+      - "5174:5174"
+
+  recruiter-frontend:
+    build:
+      context: ./goHire/recruiter/frontend
+    container_name: gohire-recruiter-frontend
+    restart: unless-stopped
+    depends_on:
+      - recruiter-backend
+    environment:
+      VITE_API_BASE: http://localhost:5000
+    ports:
+      - "5175:5175"

@@ -1,0 +1,73 @@
+services:
+  # Applicant Backend Microservice
+  - type: web
+    name: gohire-applicant-backend
+    env: node
+    rootDir: goHire/applicant/backend
+    buildCommand: npm install
+    startCommand: node app.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_URI_RECRUITERS
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        value: https://gohire-applicant.vercel.app
+      - key: STRIPE_SECRET_KEY
+        sync: false
+
+  # Recruiter Backend Microservice
+  - type: web
+    name: gohire-recruiter-backend
+    env: node
+    rootDir: goHire/recruiter/backend
+    buildCommand: npm install
+    startCommand: node app.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_URI_RECRUITERS
+        sync: false
+      - key: MONGO_URI_APPLICANT
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        value: https://gohire-recruiter.vercel.app
+      - key: STRIPE_SECRET_KEY
+        sync: false
+
+  # Admin Backend Microservice
+  - type: web
+    name: gohire-admin-backend
+    env: node
+    rootDir: goHire/admin/backend
+    buildCommand: npm install
+    startCommand: node app.js
+    envVars:
+      - key: PORT
+        value: 9000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI_ADMIN
+        sync: false
+      - key: MONGO_URI_RECRUITERS
+        sync: false
+      - key: MONGO_URI_APPLICANT
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        value: https://gohire-admin.vercel.app
