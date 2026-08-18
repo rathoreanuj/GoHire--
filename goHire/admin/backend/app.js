@@ -92,6 +92,10 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 // Health check
+app.get("/", (req, res)=>{
+  res.redirect("/api/health");
+})
+
 app.get("/api/health", (req, res) => {
   res.json({ ok: true, service: "admin", port: PORT });
 });
