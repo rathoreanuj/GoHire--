@@ -161,7 +161,7 @@ const Navbar = () => {
                   />
                 </svg>
               </button>
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform -translate-y-2 group-hover:translate-y-0">
+              <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                 <Link
                   to="/profile"
                   className="block px-4 py-2 text-blue-800 hover:bg-blue-50 rounded-t-lg"
@@ -207,7 +207,7 @@ const Navbar = () => {
           </div>
           <ul
             id="dropdown-menu"
-            className={`absolute right-0 mt-10 w-40 bg-yellow-500 text-blue-500 rounded-lg shadow-lg flex flex-col text-blue-800 ${
+            className={`absolute right-0 mt-10 w-40 bg-yellow-500 rounded-lg shadow-lg flex flex-col text-blue-800 ${
               mobileMenuOpen ? 'block' : 'hidden'
             }`}
           >
@@ -266,7 +266,7 @@ const Navbar = () => {
                     />
                   </svg>
                 </button>
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform -translate-y-2 group-hover:translate-y-0 flex justify-center flex-col">
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 flex justify-center flex-col">
                   <Link
                     to="/profile"
                     className="block px-4 py-2 text-blue-800 hover:bg-blue-50 rounded-t-lg"
