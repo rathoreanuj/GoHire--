@@ -48,8 +48,8 @@ const Footer = () => {
         <div className="md:text-right">
           <h4 className="text-lg font-semibold mb-4 text-yellow-400">Contact Info</h4>
           <ul className="space-y-2 text-gray-300">
-            <li>📞 Phone: 8102109959</li>
-            <li>📧 Email: sarvjeetswanshi25@gmail.com</li>
+            <li>📞 Phone: 9340041042</li>
+            <li>📧 Email: anuj.r23@iiits.in</li>
             <li>📍 Address: Chennai, India</li>
           </ul>
         </div>

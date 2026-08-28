@@ -1,9 +1,5 @@
 const validUsers = [
-  { email: "sarvjeet.s23@iiits.in", password: "123456@@", isPremium: true },
-  { email: "sauravkumar.r23@iiits.in", password: "123456@@", isPremium: false },
-  { email: "kartik.r23@iiits.in", password: "123456@@", isPremium: true },
-  { email: "anuj.r23@iiits.in", password: "123456@@", isPremium: true },
-  { email: "likhitha.b23@iiits.in", password: "123456@@", isPremium: true },
+  { email: "anuj.r23@iiits.in", password: "123456@@", isPremium: true }
 ];
 
 const { sendOtpEmail } = require('../utils/emailService');
