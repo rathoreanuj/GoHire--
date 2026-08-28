@@ -556,12 +556,6 @@ Default ports:
 
 ---
 
-## Interview-ready architecture summary
-
-> GoHire is a monorepo containing three modules: Admin, Applicant, and Recruiter. Each module has a separate frontend and backend. The frontends are built with Vite and Tailwind, while the backends run on Node.js and Express and expose REST APIs with some GraphQL support. The system stores structured data in MongoDB and uses GridFS for large uploaded files such as resumes. Admin uses session-based authentication, while Applicant and Recruiter use JWT-based authentication. Requests flow through middleware, controllers, services, and MongoDB models before a response is returned to the frontend. The project is containerized with Docker and can be deployed across cloud providers. This architecture keeps the application modular, makes feature development easier, and allows independent scaling of each product module.
-
----
-
 ## Repository notes
 
 This project includes:
